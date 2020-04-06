@@ -1,17 +1,17 @@
 <template>
     <div class="home">
         <div>
-            <input class="home_search-bar" autocapitalize="none" v-model="search" placeholder="Search for a film...">
+            <input class="home_search-bar"  v-model="search" placeholder="Search for a film...">
         </div>
         <div v-for="m in moviesSearch" :key="m.id" class="home_movies">
             <div class="home_movies-box">
-                <img class="home_movies-img" :src="m.image">
+                <router-link :to="{name: 'SingleMovie', params: { movie_slug: m.slug}}"><img class="home_movies-img" :src="m.image"></router-link>
             </div>
             <div class="home_movies-description">
                 <h4>{{ m.name }}</h4>
-                <p>{{ m.description }}</p>                
+                <p>{{ m.description }}</p>
             </div>
-        </div> 
+        </div>
     </div>
 </template>
 
@@ -20,27 +20,20 @@ export default {
     name: 'Home',
     data() {
         return {
-            search: null,
-            capitalized: ''
+            search: '',
         }
     },
     computed: {
-        capitalizedStr() {
-            return this.$store.state.movies.filter(doc => {
-                return this.capitalized = doc.name.toUpperCase();
-                console.log(this.capitalized)
-            })
-        },
         moviesSearch() {
             if (this.search === '') {
-                this.search = null   
+                this.search = null
             } else {
                 return this.$store.state.movies.filter(movie => {
-                return movie.name.match(this.search)
-                console.log(this.capitalized);
+                let capitalized = movie.name.toLowerCase();
+                return capitalized.includes(this.search.toLowerCase())
                 });
             }
-            
+
         }
     }
 }
@@ -48,6 +41,9 @@ export default {
 <style lang="scss">
 .home {
     min-height: 400px;
+    input {
+        text-transform: lowercase;
+    }
     &_search-bar {
         display: flex;
         width: 70%;
@@ -72,6 +68,7 @@ export default {
         display: flex;
         width: 200px;
         flex: 0 0 30%;
+        border-radius: 4px;
     }
     &-description {
         display: flex;
@@ -79,6 +76,9 @@ export default {
         flex-wrap: wrap;
         padding: 0px 30px 10px;
         margin-top: 55px;
+        h4 {
+            text-transform: uppercase;
+        }
     }
 }
 

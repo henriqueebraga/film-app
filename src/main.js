@@ -36,6 +36,7 @@ Vue.filter('to-uppercase', (value) => {
   return value.toUpperCase()
 });
 
+
 new Vue({
   el: '#app',
   store,

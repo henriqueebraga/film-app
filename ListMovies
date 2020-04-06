@@ -1,19 +1,12 @@
 <template>
     <div class="list">
-        <!-- <ul class="movies-status">
+        <ul class="movies-status">
             <li @click.prevent="filterSwitch($event)" id="watched">Watched movies</li>
             <li @click.prevent="filterSwitch($event)" id="active">Unwatched movies</li>
-        </ul> -->
-        <select class="list_select" v-model="selectStatus">
-            <option value="All">All</option>
-            <option value="watched">Watched</option>
-            <option value="unwatched">Unwatched</option>
-        </select>
-        <div v-for="movie in filterededByStatus" :key="movie.id" class="list_movies">
+        </ul>
+        <div v-for="movie in moviesFiltered" :key="movie.id" class="list_movies">
             <div class="list_movies-box">
-                <router-link :to="{ name: 'SingleMovie', params: { movie_slug: movie.slug }}">
-                    <img class="list_movies-img" :src="movie.image">
-                </router-link>
+                <img class="list_movies-img" :src="movie.image">
             </div>
             <div class="list_movies-description">
                 <h4>{{ movie.name }}</h4>
@@ -32,17 +25,7 @@ export default {
         return {
             movies: this.$store.state.movies,
             filter: 'active',
-            feedback: null,
-            selectStatus: 'All',
-        }
-    },
-    mounted() {
-        if(localStorage.getItem('allMovies')) {
-            try {
-                this.movies = JSON.parse(localStorage.getItem('allMovies'));
-            } catch(e) {
-                console.log(e + 'this is an error');
-            }
+            feedback: null
         }
     },
     computed: {
@@ -53,22 +36,6 @@ export default {
                 return this.$store.state.movies.filter(movie => movie.watched)
             }
             return this.$store.state.movies
-        },
-        filterededByStatus() {
-            let allMovies = this.movies;
-            let status = this.selectStatus;
-
-            if( status === 'unwatched') {
-                return allMovies.filter((movie) => {
-                    return !movie.watched
-                })
-            } else if (status === 'watched') {
-                return allMovies.filter((movie) => {
-                    return movie.watched
-                })
-            } else {
-                return allMovies;
-            }
         }
     },
     methods: {
@@ -88,10 +55,6 @@ export default {
 .list {
     margin-top: 50px;
 }
-.list_select {
-    margin: 10px 0;
-}
-
 .movies-status {
     display: flex;
     justify-content: space-evenly;

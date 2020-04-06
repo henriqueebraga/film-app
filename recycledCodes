@@ -1,0 +1,93 @@
+showLinks(event) {
+            let targetId = event.currentTarget.id;
+            if(targetId === '1') {
+                this.toggleLink = !this.toggleLink;
+                document.querySelectorAll('.movies_container-left-dropdown .jan').classList.toggle('active');
+            } else if (targetId === '2') {
+                this.toggleLink = !this.toggleLink;
+                const elements = document.querySelectorAll('.movies_container-left-dropdown .feb');
+                elements.forEach(e => e.classList.toggle('active'));
+            } else if (targetId === '3') {
+                if(this.toggleLink) {
+                this.toggleLink = false;
+                document.querySelector('.movies_container-left-dropdown .mar').classList.remove('active');
+                } else {
+                    this.toggleLink = true;
+                    document.querySelector('.movies_container-left-dropdown .mar').classList.add('active');
+                }
+            } else if (targetId === '4') {
+                if(this.toggleLink) {
+                this.toggleLink = false;
+                document.querySelector('.movies_container-left-dropdown .apr').classList.remove('active');
+                } else {
+                    this.toggleLink = true;
+                    document.querySelector('.movies_container-left-dropdown .apr').classList.add('active');
+                }
+            } else if (targetId === '5') {
+                if(this.toggleLink) {
+                this.toggleLink = false;
+                document.querySelector('.movies_container-left-dropdown .may').classList.remove('active');
+                } else {
+                    this.toggleLink = true;
+                    document.querySelector('.movies_container-left-dropdown .may').classList.add('active');
+                }
+            } else if (targetId === '6') {
+                if(this.toggleLink) {
+                this.toggleLink = false;
+                document.querySelector('.movies_container-left-dropdown .june').classList.remove('active');
+                } else {
+                    this.toggleLink = true;
+                    document.querySelector('.movies_container-left-dropdown .june').classList.add('active');
+                }
+            } else if (targetId === '7') {
+                if(this.toggleLink) {
+                this.toggleLink = false;
+                document.querySelector('.movies_container-left-dropdown .july').classList.remove('active');
+                } else {
+                    this.toggleLink = true;
+                    document.querySelector('.movies_container-left-dropdown .july').classList.add('active');
+                }
+            } else if (targetId === '8') {
+                if(this.toggleLink) {
+                this.toggleLink = false;
+                document.querySelector('.movies_container-left-dropdown .aug').classList.remove('active');
+                } else {
+                    this.toggleLink = true;
+                    document.querySelector('.movies_container-left-dropdown .aug').classList.add('active');
+                }
+            } else if (targetId === '9') {
+                if(this.toggleLink) {
+                this.toggleLink = false;
+                document.querySelector('.movies_container-left-dropdown .sep').classList.remove('active');
+                } else {
+                    this.toggleLink = true;
+                    document.querySelector('.movies_container-left-dropdown .sep').classList.add('active');
+                }
+            } else if (targetId === '10') {
+                if(this.toggleLink) {
+                this.toggleLink = false;
+                document.querySelector('.movies_container-left-dropdown .oct').classList.remove('active');
+                } else {
+                    this.toggleLink = true;
+                    document.querySelector('.movies_container-left-dropdown .oct').classList.add('active');
+                }
+            } else if (targetId === '11') {
+                if(this.toggleLink) {
+                this.toggleLink = false;
+                document.querySelector('.movies_container-left-dropdown .nov').classList.remove('active');
+                } else {
+                    this.toggleLink = true;
+                    document.querySelector('.movies_container-left-dropdown .nov').classList.add('active');
+                }
+            } else if (targetId === '12') {
+                if(this.toggleLink) {
+                this.toggleLink = false;
+                document.querySelector('.movies_container-left-dropdown .dec').classList.remove('active');
+                } else {
+                    this.toggleLink = true;
+                    document.querySelector('.movies_container-left-dropdown .dec').classList.add('active');
+                }
+            } else {
+                this.toggleLink = false;
+            }
+        }
